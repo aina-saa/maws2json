@@ -31,5 +31,5 @@ maws2json --file maws.dat
 Lets assume that you are reading again from serial port in real time:
 
 ```sh
-cat /dev/ttyUSB0 | maws2json |xargs -I % gcloud pubsub topics publish projects/my-gcp-project-id/topics/maws --message='%'
+cat /dev/ttyUSB0 | maws2json | sed 's/\"/\\\"/g' | xargs -I % gcloud pubsub topics publish projects/my-gcp-project-id/topics/maws --message='%'
 ```
