@@ -7,8 +7,8 @@ import "time"
 type Wind struct {
 	Message   string     `json:"message"`
 	Timestamp *time.Time `json:"datetime_utc,omitempty"`
-	Data1     DataPoint  `json:"WS"`
-	Data2     DataPoint  `json:"WD"`
+	Data1     DataPoint  `json:"WSCur"`
+	Data2     DataPoint  `json:"WDCur"`
 }
 
 var WindLength = 3 // ends with empty tab
