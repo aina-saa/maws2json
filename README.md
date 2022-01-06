@@ -25,3 +25,11 @@ Lets assume that you have a file called "maws.dat" that contains MAWS datalines:
 ```sh
 maws2json --file maws.dat
 ```
+
+### Read data and submit it to GCP Pub/Sub
+
+Lets assume that you are reading again from serial port in real time:
+
+```sh
+cat /dev/ttyUSB0 | maws2json |xargs -I % gcloud pubsub topics publish projects/antti-peltonens-lab-solita/topics/maws --message='%'
+```
