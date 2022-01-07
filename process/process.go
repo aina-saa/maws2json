@@ -13,7 +13,7 @@ import (
 	"github.com/aina-saa/maws2json/data"
 )
 
-func Process(file string, timestamp, wind, log, ptu bool) {
+func Process(site, file string, timestamp, wind, log, ptu bool) {
 	var scanner *bufio.Scanner
 
 	if file == "-" {
@@ -53,6 +53,9 @@ func Process(file string, timestamp, wind, log, ptu bool) {
 				ts := time.Now()
 				windData.Timestamp = &ts
 			}
+			if site != "" {
+				windData.Site = &site
+			}
 
 			for index, element := range lineItem {
 				if element == "" {
@@ -87,6 +90,9 @@ func Process(file string, timestamp, wind, log, ptu bool) {
 				ts := time.Now()
 				logData.Timestamp = &ts
 			}
+			if site != "" {
+				logData.Site = &site
+			}
 
 			for index, element := range lineItem {
 				if element == "" {
@@ -120,6 +126,9 @@ func Process(file string, timestamp, wind, log, ptu bool) {
 			if timestamp {
 				ts := time.Now()
 				ptuData.Timestamp = &ts
+			}
+			if site != "" {
+				ptuData.Site = &site
 			}
 
 			for index, element := range lineItem {

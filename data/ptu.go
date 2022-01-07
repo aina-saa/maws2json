@@ -5,6 +5,7 @@ import "time"
 // TA60sAvg,TA24hMin,TA24hMax,DP60sAvg,DP24hMin,DP24hMax,RH60sAvg,RH24hMin,RH24hMax,PA60sAvg,PA24hMin,PA24hMax,QFF60sAvg,QFF24hMin,QFF24hMax,SR60sAvg,SR24hMin,SR24hMax,PR1hSum,PR6hSum,PR24hSum,,,,,,
 // °C,°C,°C,°C,°C,°C,%,%,%,hPa,hPa,hPa,hPa,hPa,hPa,W/m2,W/m2,W/m2,mm,mm,mm,,,,,,
 type Ptu struct {
+	Site      *string    `json:"site_id,omitempty"`
 	Message   string     `json:"message"`
 	Timestamp *time.Time `json:"datetime_utc,omitempty"`
 	Data1     DataPoint  `json:"TA60sAvg"`

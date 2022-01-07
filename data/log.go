@@ -5,6 +5,7 @@ import "time"
 // TA60sAvg,DP60sAvg,RH60sAvg,PA60sAvg,QFF60sAvg,SR60sSum,PR60sSum,WD2minAvg,WS2minAvg,
 // °C,°C,%,hPa,hPa,W/m2,mm,°,m/s,
 type Log struct {
+	Site      *string    `json:"site_id,omitempty"`
 	Message   string     `json:"message"`
 	Timestamp *time.Time `json:"datetime_utc,omitempty"`
 	Data1     DataPoint  `json:"TA60sAvg"`

@@ -5,6 +5,7 @@ import "time"
 // WS,WD
 // m/s, °
 type Wind struct {
+	Site      *string    `json:"site_id,omitempty"`
 	Message   string     `json:"message"`
 	Timestamp *time.Time `json:"datetime_utc,omitempty"`
 	Data1     DataPoint  `json:"WSCur"`
