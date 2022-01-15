@@ -7,7 +7,7 @@ import "time"
 type Ptu struct {
 	Site      *string    `json:"site_id,omitempty"`
 	Message   string     `json:"message"`
-	Timestamp *time.Time `json:"datetime_utc,omitempty"`
+	Timestamp *time.Time `json:"datetime,omitempty"`
 	Data1     DataPoint  `json:"TA60sAvg"`
 	Data2     DataPoint  `json:"TA24hMin"`
 	Data3     DataPoint  `json:"TA24hMax"`

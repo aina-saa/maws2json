@@ -7,7 +7,7 @@ import "time"
 type Log struct {
 	Site      *string    `json:"site_id,omitempty"`
 	Message   string     `json:"message"`
-	Timestamp *time.Time `json:"datetime_utc,omitempty"`
+	Timestamp *time.Time `json:"datetime,omitempty"`
 	Data1     DataPoint  `json:"TA60sAvg"`
 	Data2     DataPoint  `json:"DP60sAvg"`
 	Data3     DataPoint  `json:"RH60sAvg"`
