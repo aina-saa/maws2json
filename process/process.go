@@ -13,7 +13,7 @@ import (
 	"github.com/aina-saa/maws2json/data"
 )
 
-func Process(site, file string, timestamp, wind, log, ptu bool) {
+func Process(site, file string, timestamp, wind, log, ptu, verbose bool) {
 	var scanner *bufio.Scanner
 
 	if file == "-" {
@@ -62,9 +62,13 @@ func Process(site, file string, timestamp, wind, log, ptu bool) {
 					continue
 				}
 				if s, err := strconv.ParseFloat(strings.Trim(element, " "), 64); err == nil {
-					reflect.ValueOf(&windData).Elem().FieldByName(fmt.Sprintf("Data%v", index+1)).FieldByName("Value").SetFloat(s)
-					reflect.ValueOf(&windData).Elem().FieldByName(fmt.Sprintf("Data%v", index+1)).FieldByName("Unit").SetString(data.WindMeasurementUnits[index+1])
-					reflect.ValueOf(&windData).Elem().FieldByName(fmt.Sprintf("Data%v", index+1)).FieldByName("Description").SetString(data.WindDescription[index+1])
+					if verbose {
+						reflect.ValueOf(&windData).Elem().FieldByName(fmt.Sprintf("Data%v", index+1)).FieldByName("Value").SetFloat(s)
+						reflect.ValueOf(&windData).Elem().FieldByName(fmt.Sprintf("Data%v", index+1)).FieldByName("Unit").SetString(data.WindMeasurementUnits[index+1])
+						reflect.ValueOf(&windData).Elem().FieldByName(fmt.Sprintf("Data%v", index+1)).FieldByName("Description").SetString(data.WindDescription[index+1])
+					} else {
+						reflect.ValueOf(&windData).Elem().FieldByName(fmt.Sprintf("Data%v", index+1)).FieldByName("Value").SetFloat(s)
+					}
 				} else {
 					panic(err)
 				}

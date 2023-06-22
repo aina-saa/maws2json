@@ -27,6 +27,7 @@ var CLI struct {
 	Wind      bool        `help:"Process WIND messages." negatable:"true" default:"true"`
 	Log       bool        `help:"Process LOG messages." negatable:"true" default:"true"`
 	Ptu       bool        `help:"Process PTU messages." negatable:"true" default:"true"`
+	Verbose   bool        `help:"Generate more verbose JSON." negatable:"true" default:"true"`
 	Version   VersionFlag `name:"version" help:"Print version information and quit"`
 }
 
@@ -38,7 +39,7 @@ func main() {
 	switch ctx.Command() {
 	default:
 		// we dont have a subcommand so we always drop into default
-		process.Process(CLI.Site, CLI.File, CLI.Timestamp, CLI.Wind, CLI.Log, CLI.Ptu)
+		process.Process(CLI.Site, CLI.File, CLI.Timestamp, CLI.Wind, CLI.Log, CLI.Ptu, CLI.Verbose)
 	}
 }
 

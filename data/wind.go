@@ -12,6 +12,14 @@ type Wind struct {
 	Data2     DataPoint  `json:"WDCur"`
 }
 
+type SimpleWind struct {
+	Site      *string    `json:"site_id,omitempty"`
+	Message   string     `json:"message,omitempty"`
+	Timestamp *time.Time `json:"datetime,omitempty"`
+	Data1     float64    `json:"WSCur"`
+	Data2     float64    `json:"WDCur"`
+}
+
 var WindLength = 3 // ends with empty tab
 
 var WindMeasurementUnits = map[int]string{
